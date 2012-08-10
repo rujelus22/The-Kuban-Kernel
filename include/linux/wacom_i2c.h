@@ -178,7 +178,4 @@ struct wacom_i2c {
 	int (*power)(int on);
 	struct work_struct update_work;
 	struct delayed_work resume_work;
-	unsigned int cpufreq_level;
-	bool dvfs_lock_status;
-	struct delayed_work dvfs_work;
 };

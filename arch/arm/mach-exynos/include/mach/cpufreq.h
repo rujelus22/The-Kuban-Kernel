@@ -34,7 +34,6 @@ enum cpufreq_lock_ID {
 	DVFS_LOCK_ID_TV,	/* TV */
 	DVFS_LOCK_ID_MFC,	/* MFC */
 	DVFS_LOCK_ID_USB,	/* USB */
-	DVFS_LOCK_ID_USB_IF,	/* USB_IF */
 	DVFS_LOCK_ID_CAM,	/* CAM */
 	DVFS_LOCK_ID_PM,	/* PM */
 	DVFS_LOCK_ID_USER,	/* USER */
@@ -70,10 +69,13 @@ struct exynos_dvfs_info {
 	unsigned int	max_support_idx;
 	unsigned int	min_support_idx;
 	unsigned int	gov_support_freq;
+	unsigned int	max_current_idx;
+	unsigned int	min_current_idx;
 	struct clk	*cpu_clk;
 	unsigned int	*volt_table;
 	struct cpufreq_frequency_table	*freq_table;
 	void (*set_freq)(unsigned int, unsigned int);
+	void (*set_volt)(unsigned int);
 	bool (*need_apll_change)(unsigned int, unsigned int);
 };
 
@@ -107,9 +109,4 @@ static inline int exynos4x12_cpufreq_init(struct exynos_dvfs_info *info)
 extern int exynos5250_cpufreq_init(struct exynos_dvfs_info *);
 #else
 	#warning "Should define CONFIG_ARCH_EXYNOS4(5)\n"
-#endif
-
-#if defined(CONFIG_EXYNOS5250_ABB_WA)
-/* These function and variables should be removed in EVT1 */
-void exynos5250_set_arm_abbg(unsigned int arm_volt, unsigned int int_volt);
 #endif

@@ -2,7 +2,7 @@ VERSION = 3
 PATCHLEVEL = 0
 SUBLEVEL = 15
 EXTRAVERSION =
-NAME = KUBAN_V0.1.2
+NAME = Sneaky Weasel
 
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"

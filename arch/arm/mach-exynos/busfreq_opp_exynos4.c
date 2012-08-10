@@ -40,7 +40,7 @@
 #include <mach/regs-mem.h>
 #include <mach/cpufreq.h>
 #include <mach/dev.h>
-#include <mach/busfreq.h>
+#include <mach/busfreq_exynos4.h>
 
 #include <plat/map-s5p.h>
 #include <plat/cpu.h>

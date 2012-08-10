@@ -636,7 +636,7 @@ int melfas_power(int on)
 	if (IS_ERR(regulator))
 		return PTR_ERR(regulator);
 
-	pr_debug("[TSP] %s %s\n", __func__, on ? "on" : "off");
+	printk(KERN_DEBUG "[TSP] %s %s\n", __func__, on ? "on" : "off");
 
 	if (on) {
 		regulator_enable(regulator);

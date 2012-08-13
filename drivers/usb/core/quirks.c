@@ -117,8 +117,14 @@ static const struct usb_device_id usb_quirk_list[] = {
 	{ USB_DEVICE(0x06a3, 0x0006), .driver_info =
 			USB_QUIRK_CONFIG_INTF_STRINGS },
 
-	/* Guillemot Webcam Hercules Dualpix Exchange*/
+	/* Guillemot Webcam Hercules Dualpix Exchange (2nd ID) */
 	{ USB_DEVICE(0x06f8, 0x0804), .driver_info = USB_QUIRK_RESET_RESUME },
+
+	/* Guillemot Webcam Hercules Dualpix Exchange*/
+	{ USB_DEVICE(0x06f8, 0x3005), .driver_info = USB_QUIRK_RESET_RESUME },
+
+	/* Midiman M-Audio Keystation 88es */
+	{ USB_DEVICE(0x0763, 0x0192), .driver_info = USB_QUIRK_RESET_RESUME },
 
 	/* M-Systems Flash Disk Pioneers */
 	{ USB_DEVICE(0x08ec, 0x1000), .driver_info = USB_QUIRK_RESET_RESUME },
@@ -146,6 +152,21 @@ static const struct usb_device_id usb_quirk_list[] = {
 
 	/* INTEL VALUE SSD */
 	{ USB_DEVICE(0x8086, 0xf1a5), .driver_info = USB_QUIRK_RESET_RESUME },
+
+	/* Samsung CMC221 LTE Modem */
+	{ USB_DEVICE(0x04e8, 0x6999), .driver_info = USB_QUIRK_NO_GET_STATUS },
+
+	/* IMC_BOOT - XMM6260, XMM6262 */
+	{ USB_DEVICE(0x058b, 0x0041), .driver_info = USB_QUIRK_HSIC_TUNE },
+
+	/* IMC_MAIN - XMM6260, XMM6262 */
+	{ USB_DEVICE(0x1519, 0x0020), .driver_info = USB_QUIRK_HSIC_TUNE },
+
+	/* STE_BOOT - M7400 */
+	{ USB_DEVICE(0x04cc, 0x7400), .driver_info = USB_QUIRK_HSIC_TUNE },
+
+	/* STE_MAIN - M7400 */
+	{ USB_DEVICE(0x04cc, 0x2333), .driver_info = USB_QUIRK_HSIC_TUNE },
 
 	{ }  /* terminating entry must be last */
 };

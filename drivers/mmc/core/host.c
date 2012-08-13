@@ -112,8 +112,7 @@ static void mmc_host_clk_gate_delayed(struct mmc_host *host)
  */
 static void mmc_host_clk_gate_work(struct work_struct *work)
 {
-	struct mmc_host *host = container_of(work, struct mmc_host,
-					      clk_gate_work);
+	struct mmc_host *host = container_of(work, struct mmc_host, clk_gate_work);
 
 	mmc_host_clk_gate_delayed(host);
 }

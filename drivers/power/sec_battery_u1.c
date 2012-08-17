@@ -900,7 +900,7 @@ static int sec_bat_check_temper(struct sec_bat_info *info)
 					if (info->batt_temp_high_cnt <
 					    TEMP_BLOCK_COUNT)
 						info->batt_temp_high_cnt++;
-				dev_info(info->dev, "%s: high count = %d\n",
+				dev_dbg(info->dev, "%s: high count = %d\n",
 					 __func__, info->batt_temp_high_cnt);
 			} else if (temp_radc <= HIGH_RECOVER_TEMP_ADC_LPM &&
 				   temp_radc >= LOW_RECOVER_TEMP_ADC_LPM) {
@@ -912,7 +912,7 @@ static int sec_bat_check_temper(struct sec_bat_info *info)
 					if (info->batt_temp_recover_cnt <
 					    TEMP_BLOCK_COUNT)
 						info->batt_temp_recover_cnt++;
-					dev_info(info->dev,
+					dev_dbg(info->dev,
 						 "%s: recovery count = %d\n",
 						 __func__,
 						 info->batt_temp_recover_cnt);
@@ -924,7 +924,7 @@ static int sec_bat_check_temper(struct sec_bat_info *info)
 					if (info->batt_temp_low_cnt <
 					    TEMP_BLOCK_COUNT)
 						info->batt_temp_low_cnt++;
-				dev_info(info->dev, "%s: low count = %d\n",
+				dev_dbg(info->dev, "%s: low count = %d\n",
 					 __func__, info->batt_temp_low_cnt);
 			} else {
 				info->batt_temp_high_cnt = 0;
@@ -1078,7 +1078,7 @@ static int sec_bat_check_temper(struct sec_bat_info *info)
 		}
 	}
 #ifndef PRODUCT_SHIP
-	dev_info(info->dev, "%s: temp=%d, adc=%d\n", __func__, temp, temp_adc);
+	dev_dbg(info->dev, "%s: temp=%d, adc=%d\n", __func__, temp, temp_adc);
 #endif
 	return temp;
 }
@@ -1660,7 +1660,7 @@ static void sec_bat_cable_work(struct work_struct *work)
 static bool sec_bat_charging_time_management(struct sec_bat_info *info)
 {
 	if (info->charging_start_time == 0) {
-		dev_info(info->dev,
+		dev_dbg(info->dev,
 			"%s: charging_start_time has never been used since initializing\n",
 			__func__);
 		return false;
@@ -1729,7 +1729,7 @@ static bool sec_bat_charging_time_management(struct sec_bat_info *info)
 		return false;
 	}
 #ifndef PRODUCT_SHIP
-	dev_info(info->dev, "Time past : %u secs\n",
+	dev_dbg(info->dev, "Time past : %u secs\n",
 		 jiffies_to_msecs(info->charging_passed_time) / 1000);
 #endif
 
@@ -1829,7 +1829,7 @@ static void sec_bat_check_vf(struct sec_bat_info *info)
 		info->present_count = 0;
 	}
 
-	dev_info(info->dev, "%s: Battery Health (%d)\n",
+	dev_dbg(info->dev, "%s: Battery Health (%d)\n",
 		 __func__, info->batt_health);
 	return;
 }
@@ -2200,14 +2200,14 @@ static void sec_bat_monitor_work(struct work_struct *work)
 
  full_charged:
 #if defined(CONFIG_TARGET_LOCALE_NAATT)
-	dev_info(info->dev,
+	dev_dbg(info->dev,
 		 "soc(%d), vfocv(%d), vcell(%d), temp(%d), charging(%d), health(%d), vf(%d)\n",
 		 info->batt_soc, info->batt_vfocv, info->batt_vcell / 1000,
 		 info->batt_temp / 10, info->charging_status, info->batt_health,
 		 info->batt_vf_adc);
 #else
 #ifndef PRODUCT_SHIP
-	dev_info(info->dev,
+	dev_dbg(info->dev,
 		 "soc(%d), vfocv(%d), vcell(%d), temp(%d), charging(%d), health(%d), chg_adc(%d)\n",
 		 info->batt_soc, info->batt_vfocv, info->batt_vcell / 1000,
 		 info->batt_temp / 10, info->charging_status,

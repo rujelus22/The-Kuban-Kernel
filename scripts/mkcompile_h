@@ -28,9 +28,9 @@ export LC_ALL
 
 if [ -z "$KBUILD_BUILD_VERSION" ]; then
 	if [ -r .version ]; then
-		VERSION=V0.1.4
+		VERSION=V0.1.5
 	else
-		VERSION=V0.1.4
+		VERSION=V0.1.5
 	fi
 else
 	VERSION=$KBUILD_BUILD_VERSION

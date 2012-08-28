@@ -1,8 +1,8 @@
 VERSION = 3
 PATCHLEVEL = 0
-SUBLEVEL = 41
+SUBLEVEL = 42
 EXTRAVERSION =
-NAME = KUBAN_KERNEL_V0.1.5
+NAME = KUBAN_KERNEL_V0.1.6
 
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"

@@ -2405,7 +2405,7 @@ static int __init touchkey_init(void)
 	       "[TouchKey] registration failed, module not inserted.ret= %d\n",
 	       ret);
 	}
-	return ret
+	return ret;
 
 }
 

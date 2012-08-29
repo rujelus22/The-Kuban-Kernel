@@ -10,7 +10,7 @@ config KEYBOARD_CYPRESS_TOUCH
 	  To compile this driver as a module, choose M here.
 
 config TOUCHKEY_BLN
-	bool "BLN Support
+	bool "BLN Support"
 	depends on KEYBOARD_CYPRESS_TOUCH
 	help
 	  BLN support.

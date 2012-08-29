@@ -1,0 +1,1 @@
+cmd_drivers/devfreq/built-in.o :=  /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/devfreq/built-in.o drivers/devfreq/devfreq.o drivers/devfreq/governor_simpleondemand.o drivers/devfreq/exynos4_bus.o 

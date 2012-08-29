@@ -1,0 +1,1 @@
+cmd_drivers/net/wimax_cmc/built-in.o :=  /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/net/wimax_cmc/built-in.o drivers/net/wimax_cmc/wimax_sdio.o drivers/net/wimax_cmc/firmware.o drivers/net/wimax_cmc/wimax_i2c.o 

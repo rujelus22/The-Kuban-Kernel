@@ -1,0 +1,1 @@
+cmd_drivers/sensor/built-in.o :=  /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/sensor/built-in.o drivers/sensor/sensors_core.o drivers/sensor/ak8975.o drivers/sensor/cm3663.o drivers/sensor/k3g.o drivers/sensor/k3dh.o 

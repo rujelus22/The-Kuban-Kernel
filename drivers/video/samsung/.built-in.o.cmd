@@ -1,0 +1,1 @@
+cmd_drivers/video/samsung/built-in.o :=  /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/video/samsung/built-in.o drivers/video/samsung/s3cfb.o drivers/video/samsung/s3cfb_fimd6x.o drivers/video/samsung/ld9040.o drivers/video/samsung/smart_dimming_ld9042.o 

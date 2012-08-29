@@ -1,0 +1,1 @@
+cmd_drivers/usb/gadget/built-in.o :=  /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/usb/gadget/built-in.o drivers/usb/gadget/s3c_udc_otg.o drivers/usb/gadget/g_android.o drivers/usb/gadget/multi_config.o 

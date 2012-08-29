@@ -34,9 +34,6 @@
 #include <linux/regulator/machine.h>
 #include "u1-cypress-gpio.h"
 
-#include <linux/regulator/consumer.h>
-#include <linux/regulator/driver.h>
-#include <linux/regulator/machine.h>
 #include <plat/gpio-cfg.h>
 #include <mach/gpio.h>
 
@@ -1289,16 +1286,42 @@ static void handle_notification_timeout(unsigned long data)
 	schedule_work(&notification_off_work);
 }
 
-static ssize_t led_timeout_read( struct device *dev, struct device_attribute *attr, char *buf )
+static ssize_t led_timeout_read_ms( struct device *dev, struct device_attribute *attr, char *buf )
 {
 	return sprintf(buf,"%d\n", led_timeout);
+}
+
+static ssize_t led_timeout_read( struct device *dev, struct device_attribute *attr, char *buf )
+{
+	return sprintf(buf,"%d\n", led_timeout/1000);
+}
+
+static ssize_t led_timeout_write_ms( struct device *dev, struct device_attribute *attr, const char *buf, size_t size )
+{
+	int i = 0;
+	sscanf(buf,"%d\n", &i);
+	if(i < 0) return size;
+	led_timeout = i;
+	if(!led_disabled)
+	if(led_timeout == 0)
+	{
+		del_timer(&led_timer);
+	}
+	else mod_timer(&led_timer, jiffies + msecs_to_jiffies(led_timeout));
+	return size;
 }
 
 static ssize_t led_timeout_write( struct device *dev, struct device_attribute *attr, const char *buf, size_t size )
 {
 	sscanf(buf,"%d\n", &led_timeout);
-	if(led_timeout == 0) del_timer(&led_timer);
-	else mod_timer(&led_timer, jiffies + msecs_to_jiffies(led_timeout));
+	led_timeout = led_timeout * 1000;
+
+	if (!led_disabled) {
+		if (led_timeout == 0)
+			del_timer(&led_timer);
+			schedule_work(&led_fadein_work);
+	} else mod_timer(&led_timer, jiffies + msecs_to_jiffies(led_timeout));
+
 	return size;
 }
 
@@ -1453,6 +1476,7 @@ static struct miscdevice led_device = {
 
 static DEVICE_ATTR(led, S_IRUGO | S_IWUGO, notification_led_status_read,  notification_led_status_write );
 static DEVICE_ATTR(notification_timeout, S_IRUGO | S_IWUGO, notification_timeout_read, notification_timeout_write );
+static DEVICE_ATTR(led_timeout_ms, S_IRUGO | S_IWUGO, led_timeout_read_ms, led_timeout_write_ms );
 static DEVICE_ATTR(led_timeout, S_IRUGO | S_IWUGO, led_timeout_read, led_timeout_write );
 static DEVICE_ATTR(bl_timeout, S_IRUGO | S_IWUGO, led_timeout_read, led_timeout_write );
 static DEVICE_ATTR(notification_enabled, S_IRUGO | S_IWUGO, bln_status_read, bln_status_write );
@@ -1464,7 +1488,7 @@ static DEVICE_ATTR(led_on_touch, S_IRUGO | S_IWUGO, led_on_touch_read, led_on_to
 
 static struct attribute *led_notification_attributes[] = {
 	&dev_attr_led.attr,
-	&dev_attr_led_timeout.attr,
+	&dev_attr_led_timeout_ms.attr,
 	&dev_attr_bl_timeout.attr,
 	&dev_attr_notification_timeout.attr,
 	&dev_attr_notification_enabled.attr,
@@ -1488,6 +1512,10 @@ static struct miscdevice bln_device = {
         .minor = MISC_DYNAMIC_MINOR,
         .name  = "backlightnotification",
 };
+
+#ifdef CONFIG_TOUCHSCREEN_ATMEL_MXT224_U1
+extern void (*mxt224_touch_cb)(void);
+#endif
 
 void cypress_notify_touch(void)
 {
@@ -1655,6 +1683,10 @@ static int i2c_touchkey_probe(struct i2c_client *client,
 	/* turn off the LED on probe */
 	status = 2;
 	i2c_touchkey_write((u8 *)&status, 1);
+	
+#ifdef CONFIG_TOUCHSCREEN_ATMEL_MXT224_U1
+	mxt224_touch_cb = cypress_notify_touch;
+#endif
 #endif
 	return 0;
 }

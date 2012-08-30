@@ -1,1 +1,0 @@
-cmd_drivers/samsung/j4fs/j4fs.ko := /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /media/Android/The-Kuban-Kernel_Testing/scripts/module-common.lds --build-id  -o drivers/samsung/j4fs/j4fs.ko drivers/samsung/j4fs/j4fs.o drivers/samsung/j4fs/j4fs.mod.o

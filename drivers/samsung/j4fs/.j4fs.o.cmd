@@ -1,1 +1,0 @@
-cmd_drivers/samsung/j4fs/j4fs.o := /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL    -r -o drivers/samsung/j4fs/j4fs.o drivers/samsung/j4fs/j4fs_kernel.o drivers/samsung/j4fs/llid_kernel.o drivers/samsung/j4fs/fsd_common.o 

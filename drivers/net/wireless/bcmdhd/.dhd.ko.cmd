@@ -1,1 +1,0 @@
-cmd_drivers/net/wireless/bcmdhd/dhd.ko := /media/Android/Toolchains/Android_Toolchains/arm-eabi-4.4.3/bin/arm-eabi-ld -EL -r  -T /media/Android/The-Kuban-Kernel_Testing/scripts/module-common.lds --build-id  -o drivers/net/wireless/bcmdhd/dhd.ko drivers/net/wireless/bcmdhd/dhd.o drivers/net/wireless/bcmdhd/dhd.mod.o

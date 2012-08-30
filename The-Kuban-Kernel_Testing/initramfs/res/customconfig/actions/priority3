@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  priority3=$2
+fi
+
+sed -i 's/priority3=.*/priority3=$2/g' /data/.kuban/default.profile
+
+echo $priority3

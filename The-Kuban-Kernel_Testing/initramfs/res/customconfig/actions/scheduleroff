@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  scheduleroff=$2
+fi
+
+sed -i 's/scheduleroff=.*/scheduleroff=$2/g' /data/.kuban/default.profile
+
+echo $scheduleroff

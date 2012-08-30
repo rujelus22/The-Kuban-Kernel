@@ -1,0 +1,21 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  screengestures=$2
+fi
+
+case "${screengestures}" in
+  1)
+	pkill -f "6gestures.sh"
+	pkill -f "/sys/devices/virtual/misc/touch_gestures/wait_for_gesture"
+	sed -i 's/screengestures=.*/screengestures=1/g' /data/.kuban/default.profile
+    ;;
+  0)
+	pkill -f "6gestures.sh"
+	pkill -f "/sys/devices/virtual/misc/touch_gestures/wait_for_gesture"
+	sed -i 's/screengestures=.*/screengestures=0/g' /data/.kuban/default.profile
+    ;;
+esac;
+
+echo $screengestures
+/data/.kuban/6gestures.sh

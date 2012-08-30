@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  screen_off_enabled=$2
+fi
+
+sed -i 's/screen_off_enabled=.*/screen_off_enabled=$2/g' /data/.kuban/default.profile
+
+echo $screen_off_enabled

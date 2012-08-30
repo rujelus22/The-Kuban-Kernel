@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  charging_enabled=$2
+fi
+
+sed -i 's/charging_enabled=.*/charging_enabled=$2/g' /data/.kuban/default.profile
+
+echo $charging_enabled

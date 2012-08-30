@@ -1,0 +1,11 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  supplicant_scan_interval=$2
+fi
+
+mount -o remount,rw /system
+
+sed -i "s/wifi.supplicant_scan_interval=.*/wifi.supplicant_scan_interval=$supplicant_scan_interval/g" /system/build.prop
+
+echo $supplicant_scan_interval

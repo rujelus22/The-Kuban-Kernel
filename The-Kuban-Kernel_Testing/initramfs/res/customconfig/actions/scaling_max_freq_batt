@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  scaling_max_freq_batt=$2
+fi
+
+sed -i 's/scaling_max_freq_batt=.*/scaling_max_freq_batt=$2/g' /data/.kuban/default.profile
+
+echo $scaling_max_freq_batt

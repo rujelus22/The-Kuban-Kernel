@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  io_enabled=$2
+fi
+
+sed -i 's/io_enabled=.*/io_enabled=$2/g' /data/.kuban/default.profile
+
+echo $io_enabled

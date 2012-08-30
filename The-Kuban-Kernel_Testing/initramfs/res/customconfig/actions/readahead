@@ -1,0 +1,31 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  readahead=$2
+fi
+
+case "${readahead}" in
+  4096)
+	echo "4096" > /sys/devices/virtual/bdi/*/read_ahead_kb
+    ;;
+  3072)
+	echo "3072" > /sys/devices/virtual/bdi/*/read_ahead_kb
+    ;;
+  2048)
+	echo "2048" > /sys/devices/virtual/bdi/*/read_ahead_kb
+    ;;
+  1024)
+	echo "1024" > /sys/devices/virtual/bdi/*/read_ahead_kb
+    ;;
+  512)
+	echo "512" > /sys/devices/virtual/bdi/*/read_ahead_kb
+    ;;
+  256)
+	echo "256" > /sys/devices/virtual/bdi/*/read_ahead_kb
+    ;;
+  128)
+	echo "128" > /sys/devices/virtual/bdi/*/read_ahead_kb
+    ;;
+esac;
+
+echo $readahead

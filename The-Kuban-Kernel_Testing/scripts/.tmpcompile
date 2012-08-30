@@ -1,0 +1,6 @@
+/* This file is auto generated, version 0 */
+#define UTS_MACHINE ""
+#define UTS_VERSION "#0 Sat Aug 11 23:10:42 PDT 2012"
+#define LINUX_COMPILE_BY "Kuban_Kernel_V0.1.3"
+#define LINUX_COMPILE_HOST " "
+#define LINUX_COMPILER "/media/Android/Kernel/E4GT_ICS_kernel/scripts/mkcompile_h: 80: -v: not found"

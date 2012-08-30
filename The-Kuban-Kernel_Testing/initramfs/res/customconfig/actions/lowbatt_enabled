@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  lowbatt_enabled=$2
+fi
+
+sed -i 's/lowbatt_enabled=.*/lowbatt_enabled=$2/g' /data/.kuban/default.profile
+
+echo $lowbatt_enabled

@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  enabled=$2
+fi
+
+sed -i 's/enabled=.*/enabled=$2/g' /data/.kuban/default.profile
+
+echo $enabled

@@ -1,0 +1,11 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+  lowbatt=$2
+fi
+
+chmod 777 /data/.kuban/default.profile
+
+sed -i 's/low_battery=.*/low_battery=$2/g' /data/.kuban/default.profile
+
+echo $lowbatt

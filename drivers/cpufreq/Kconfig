@@ -233,6 +233,10 @@ config CPU_FREQ_DEFAULT_GOV_LULZACTIVE
 	help
 	  Use the CPUFreq governor 'lulzactive' as default.
 
+config CPU_FREQ_DEFAULT_GOV_LULZACTIVEQ
+	bool "lulzactiveq"
+	select CPU_FREQ_GOV_LULZACTIVEQ	  
+	  
 config CPU_FREQ_DEFAULT_GOV_MINMAX
 	bool "minmax"
 	select CPU_FREQ_GOV_MINMAX
@@ -568,6 +572,12 @@ config CPU_FREQ_GOV_LULZACTIVE
 
 	  If in doubt, say N.
 
+config CPU_FREQ_GOV_LULZACTIVEQ
+	tristate "'lulzactiveq' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'lulzactiveq' - NEW hotplug mechanism added in lulzactive	  
+	  
 config CPU_FREQ_GOV_ABYSSPLUG
 	tristate "'abyssplug' cpufreq governor"
 	depends on CPU_FREQ && NO_HZ && HOTPLUG_CPU

@@ -565,7 +565,8 @@ static int standhotplug_cpufreq_policy_notifier_call(struct notifier_block *this
 		if (
 			(!strnicmp(policy->governor->name, "pegasusq", CPUFREQ_NAME_LEN)) ||
 			(!strnicmp(policy->governor->name, "hotplug", CPUFREQ_NAME_LEN)) ||
-			(!strnicmp(policy->governor->name, "assplug", CPUFREQ_NAME_LEN))
+			(!strnicmp(policy->governor->name, "lulzactiveq", CPUFREQ_NAME_LEN)) ||
+			(!strnicmp(policy->governor->name, "abussplug", CPUFREQ_NAME_LEN))
 			) 
 		{
 			if(standhotplug_enabled)

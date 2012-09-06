@@ -106,6 +106,9 @@ struct mdnie_info {
 #ifdef CONFIG_HAS_EARLYSUSPEND
 	struct early_suspend    early_suspend;
 #endif
+	unsigned short user_mode;
+	unsigned short user_cb;
+	unsigned short user_cr;
 };
 
 extern struct mdnie_info *g_mdnie;
@@ -113,5 +116,6 @@ extern struct mdnie_info *g_mdnie;
 int mdnie_send_sequence(struct mdnie_info *mdnie, const unsigned short *seq);
 extern void set_mdnie_value(struct mdnie_info *mdnie, u8 force);
 extern int mdnie_txtbuf_to_parsing(char const *pFilepath);
+
 
 #endif /* __MDNIE_H__ */
